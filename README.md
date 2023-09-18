@@ -1,5 +1,6 @@
 # GitHub + Markdown: Práctica
 ___Mario Tarrega Beltran___
+![Imagen identificativa](https://github.com/MarioTarrega/DAW23/blob/UD1/Foto%20Ficha.jpg)
 
 ## Introduccion.
 En este docuemto veremos ¿Que es GitHub? y tambien veremos sus usos y sus ventajas, tambien tendremos una pequeña conclusion y varios enlaces de donde podeis obtener más información.
