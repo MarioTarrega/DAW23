@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js/"></script>
+</head>
+<body>
+    
+    <h1>Contador de Botón</h1>
+    <p>Veces que se ha presionado el botón: <span id="contador">0</span></p>
+    <button id="boton">Presionar Botón</button>
+
+    <script>
+    
+        var contador = 0;
+
+        
+        var boton = document.getElementById("boton");
+        var contadorElement = document.getElementById("contador");
+
+       
+        function incrementarContador() {
+            contador++;
+            contadorElement.textContent = contador;
+
+            if(contador === 10 ){
+                boton.disabled = true;
+            }
+        }
+
+        
+        boton.addEventListener("click", incrementarContador);
+    </script>
+</body>
+</html>
