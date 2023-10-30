@@ -20,5 +20,5 @@ Realizamos una presentacion por grupos sobre un tema a elegir sobre unos cuantos
 
   ## Quincena 5 (23/10 - 30/10)
 
-  Acabar de redactar el manual de la practica Apache, recordar y aprender comandos de Linux revisando ejercicios resueltos, pequeña explicación de SSH y realizacion de un trabajo por parejas, en el cual uno de los dos tiene que hacer que si maquina sea una maquina servidor y el otro sera el clinete el cual accedera a la maquina servidor y le pondra datos/eliminara/modificar.
+  Acabar de redactar el manual de la practica Apache, recordar y aprender comandos de Linux revisando ejercicios resueltos de google classroom del archivo *Ejercicios resuletos BASH* y del material que hay en el apartado de *Guía de comandos básicos*, pequeña explicación de SSH y realizacion de un trabajo por parejas, en el cual uno de los dos tiene que hacer que si maquina sea una maquina servidor y el otro sera el clinete el cual accedera a la maquina servidor y le pondra datos/eliminara/modificar.
 
