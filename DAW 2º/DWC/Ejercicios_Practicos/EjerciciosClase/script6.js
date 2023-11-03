@@ -1,13 +1,10 @@
 
 class Fecha {
-    constructor() {
-      this.dia = null;
-      this.mes = null;
-      this.año = null;
-    }
-   
-    #isValidDate(dia, mes, año) {
-      if (año % 4 === 0) {
+    #dia
+    #mes
+    #anyo
+    #isValidDate(dia, mes, anyo) {
+      if (anyo % 4 === 0) {
         const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         return dia >= 1 && dia <= daysInMonth[mes - 1] && mes >= 1 && mes <= 12;
       } else {
@@ -20,12 +17,12 @@ class Fecha {
       const fecha = fecha_str.split("-");
       const dia = parseInt(fecha[0]);
       const mes = parseInt(fecha[1]);
-      const año = parseInt(fecha[2]);
+      const anyo = parseInt(fecha[2]);
    
-      if (this.isValidDate(dia, mes, año)) {
-        this.dia = dia;
-        this.mes = mes;
-        this.año = año;
+      if (this.isValidDate(dia, mes, anyo)) {
+        this.#dia = dia;
+        this.#mes = mes;
+        this.#anyo = anyo;
       }
     }
    
