@@ -1,3 +1,5 @@
+//Ejercicio de Clases.
+
 class Animal{
     #id_animal
     constructor(nombre, edad, id_animal){
@@ -12,15 +14,16 @@ class Animal{
 }
 
 class Mamifero extends Animal{
-    constructor(nombre, edad, tipoPelaje, presentar){
-        super(nombre, edad, presentar)
+    constructor(nombre, edad, tipoPelaje){
+        super(nombre, edad)
         this.tipoPelaje = tipoPelaje
     }
+    
 }
 
 class Ave extends Animal{
-    constructor(nombre, edad, tipoPlumaje, presentar){
-        super(nombre, edad, presentar)
+    constructor(nombre, edad, tipoPlumaje){
+        super(nombre, edad)
         this.tipoPlumaje = tipoPlumaje
     }
 }
@@ -29,5 +32,10 @@ class Ave extends Animal{
 const mamifero = new Mamifero("Vaca", 7, "corto")
 const ave = new Ave("Gorrion", 12, "largo")
 
+const aMamifero = Object.keys(mamifero)
+const aAve = Object.keys(ave)
+
 console.log(mamifero.presentar())
 console.log(ave.presentar())
+console.log(aMamifero)
+console.log(aAve)
