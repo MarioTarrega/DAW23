@@ -4,6 +4,7 @@ require_once "conectar.php";
 
 
 if(isset($_POST['submit'])){
+    $_SESSION["nombre"] = $_POST['username'];
     $user = $_POST['username'];
     $pass = $_POST['password'];
 
