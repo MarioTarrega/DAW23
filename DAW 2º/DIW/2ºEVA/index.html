@@ -6,6 +6,58 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div style="position: relative;">
+        <canvas id="myCanvas" width="1000" height="700"
+            style="position: absolute; left: 0; top : 0;z-index : 0;"></canvas>
+        <canvas id="myCanvas2" width="1000" height="700"
+            style="position: absolute; left: 0; top : 0;z-index : 1; border: 1px solid #d3d3d3;"></canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const contexto = canvas.getContext("2d");
+        const canvas2 = document.getElementById("myCanvas2");
+        const contexto2 = canvas2.getContext("2d");
+        const rect = canvas.getBoundingClientRect();
+        var pulsado = false;
+
+        addEventListener("mousedown",function(){
+            pulsado = true;
+
+            x_inicial = event.clientX;
+            y_inicial = event.clientY;
+        })
+
+        addEventListener("mousemove", function(){
+            if(!pulsado) return
+
+            var x_final = event.clientX;
+            var y_final = event.clientY;
+
+            var radio = Math.sqrt((x_inicial-x_final)**2 + (y_inicial-y_final)**2);
+
+            contexto2.clearRect(0,0,canvas.width, canvas.height);
+            contexto2.beginPath();
+            contexto2.fillStyle="rgb(0,0,0,0.5)";
+            contexto2.arc(x_inicial-rect.left,y_inicial-rect.top,radio,0,2*Math.PI);
+            contexto2.fill();
+        })
+        addEventListener("mouseup", function(){
+            pulsado = false;
+            
+            var x_final = event.clientX;
+            var y_final = event.clientY;
+
+            var radio = Math.sqrt((x_inicial-x_final)**2 + (y_inicial-y_final)**2);
+
+            var colorR = Math.floor(Math.random()*256);
+            var colorG = Math.floor(Math.random()*256);
+            var colorB = Math.floor(Math.random()*256);
+            contexto2.clearRect(0,0,canvas.width, canvas.height);
+            contexto.beginPath();
+            contexto.fillStyle="rgb("+colorR+","+colorG+","+colorB+")";
+            contexto.arc(x_inicial-rect.left,y_inicial-rect.top,radio,0,2*Math.PI);
+            contexto.fill();
+        })
+    </script>
 </body>
 </html>

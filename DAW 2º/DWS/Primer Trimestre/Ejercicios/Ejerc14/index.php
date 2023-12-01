@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
     }
     
 } 
-
+mysqli_close(conectarBBDD());
 ?>
 <!DOCTYPE html>
 <html lang="en">

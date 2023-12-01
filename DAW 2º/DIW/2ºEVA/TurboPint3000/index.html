@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turbo Pint 3000</title>
+    <style>
+        #canvas{
+            border: 1px solid;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <label for="redRange">Rojo</label>
+    <input type="range" id="redRange" min="0" max="255" value="0"/>
+    <label for="greenRange">Verde</label>
+    <input type="range" id="greenRange" min="0" max="255" value="0"/>
+    <label for="blueRange">Azul</label>
+    <input type="range" id="blueRange" min="0" max="255" value="0"/>
+
+    <label for="grosor">Grosor del Pincel:</label>
+    <input type="number" id="grosor" min="1" max="40" step="1" value="10">
+
+    <label for="hslSequential">HSL</label>
+    <input type="checkbox" name="hslSequential" id="hslSequential">
+
+    <button onclick="clearCanvas()">Borrar</button>
+
+    <br>
+
+    <canvas id="canvas" width="800" height="600"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext("2d");
+
+        let isPainting = false;
+        let hue = 0;
+        canvas.addEventListener('mousedown', startPaint);
+        canvas.addEventListener('mousemove', paint);
+        canvas.addEventListener('mouseup', stopPaint);
+
+        function startPaint(event){
+            isPainting = true;
+            paint(event);
+        }
+
+        function paint(event){
+            if(!isPainting) return;
+
+            const red = document.getElementById('redRange').value;
+            const green = document.getElementById('greenRange').value;
+            const blue = document.getElementById('blueRange').value;
+            const grosor = document.getElementById('grosor').value;
+            const hslMode = document.getElementById('hslSequential').checked;
+
+            ctx.lineWidth = grosor;
+            ctx.lineCap = 'round';
+
+            if(hslMode){
+                hue = (hue + 1) % 360;
+                ctx.strokeStyle = `hsl(${hue},100%,50%)`;
+                
+            }else{
+                ctx.strokeStyle = `rgb(${red}, ${green}, ${blue})`;
+            }
+
+            ctx.lineTo(event.clientX-canvas.offsetLeft,event.clientY-canvas.offsetTop);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(event.clientX-canvas.offsetLeft,event.clientY-canvas.offsetTop);
+        }
+
+        function stopPaint(){
+            isPainting = false;
+            ctx.beginPath();
+        }
+
+        function clearCanvas(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</body>
+</html>
