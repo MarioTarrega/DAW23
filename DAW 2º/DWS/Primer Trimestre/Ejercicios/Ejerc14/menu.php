@@ -1,21 +1,24 @@
 <?php
-session_start();
-require_once('conectar.php');
+    session_start();
+    require_once('conectar.php');
 
-if(isset($_SESSION['nombre'])){
-    $nombre = $_SESSION['nombre'];
-    echo "Bienvenido/a/e ".$nombre.". Selecccione la opcion deseada.";
-}
 
-$admin = "SELECT tipo FROM usuarios WHERE nombre = '$nombre'";
-$resultado = mysqli_query(conectarBBDD(), $admin);
-$tipo = mysqli_fetch_assoc($resultado);
-$_SESSION['tipo'] = $tipo["tipo"];
+    if(isset($_SESSION['nombre'])){
+        //print_r($_SESSION['tipo']);
+        
+        $nombre = $_SESSION['nombre'];
+        $admin = "SELECT tipo FROM usuarios WHERE nombre = '$nombre'";
+        $resultado = mysqli_query(conectarBBDD(), $admin);
+        $tipo = mysqli_fetch_assoc($resultado);
+        $_SESSION['tipo'] = $tipo["tipo"];
+
+        if($_SESSION['tipo']==1){
+            echo "Bienvenido/a/e ".$nombre.". Selecccione la opcion deseada.";
+        }else{
+            echo "Bienvenido/a/e ". $nombre . ". No eres administrador";
+        }
+    }
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,15 +27,20 @@ $_SESSION['tipo'] = $tipo["tipo"];
     <title>Menu</title>
 </head>
 <body>
-    <?php if($_SESSION['tipo']){ ?>
-        <h2>Usuarios:</h2>
-        <button onclick='location.href="crearUsuario.php"'>Crear</button>
-        <button onclick='location.href="mostrarUsuario.php"'>Mostrar</button>
-        <button onclick='location.href="eliminarUsuario.php"'>Eliminar</button>
+    <?php 
+        if($_SESSION['tipo']){ 
+    ?>
+    <h2>Usuarios:</h2>
+    <button onclick='location.href="crearUsuario.php"'>Crear</button>
+    <button onclick='location.href="mostrarUsuario.php"'>Mostrar</button>
+     <button onclick='location.href="eliminarUsuario.php"'>Eliminar</button>
 
-    <?php }else{ ?>
-
-    <?php } ?>
+    <?php 
+        }else{
+            echo "Habla con los administradores.";
+        }
+        mysqli_close(conectarBBDD());
+    ?>
     
 </body>
 </html>
