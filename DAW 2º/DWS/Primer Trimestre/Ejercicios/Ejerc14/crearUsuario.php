@@ -42,6 +42,7 @@
             if($cnc){
                 $result = mysqli_query($cnc, $sql);  
             }
+            
         }
 
         $sql = " INSERT into usuarios (nombre, pwd, tipo) VALUES ($user, $pass, $tipo)";
