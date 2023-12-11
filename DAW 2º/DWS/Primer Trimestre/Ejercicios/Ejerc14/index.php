@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
     $user = $_POST['username'];
     $pass = $_POST['password'];
 
-    $sql = "SELECT * FROM usuarios WHERE nombre = '$user' AND pwd = '$pass'";
+    $sql = "SELECT * FROM usuarios WHERE nombre = '$user'";
     $cnc = conectarBBDD();
     if($cnc){
         $result = mysqli_query($cnc, $sql);
@@ -16,9 +16,11 @@ if(isset($_POST['submit'])){
         $filas = mysqli_fetch_assoc($result);
         //print_r($filas);
         if(mysqli_num_rows($result) == 1){
-           header('Location: menu.php');
-
+           if(password_verify($pass, $filas['pwd'])){
+            header('Location: menu.php');
+           }
         }
+        
     }
     
 } 

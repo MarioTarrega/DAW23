@@ -33,8 +33,8 @@
     <form action="gestionUsuarios.php" method="post">
         <label for="nombre">Nombre: </label>
         <input type="text" id="nombre" name="nombre"><br><br>
-        <label for="paswd">Contraseña: </label>
-        <input type="password" id="passw" name="passw"><br><br>
+        <label for="instrumento" id="instrumento" name="instrumento"></label><br>
+        <input type="text" name="instrumento" id="instrumento">
         <label for="tipo">Tipo</label>
         <select name="tipousu" id="tipousu">
             <option value="1">Administrador</option>

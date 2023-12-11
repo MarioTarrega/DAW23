@@ -33,15 +33,23 @@
     <h2>Usuarios:</h2>
     <button onclick='location.href="crearUsuario.php"'>Crear</button>
     <button onclick='location.href="mostrarUsuario.php"'>Mostrar</button>
-     <button onclick='location.href="eliminarUsuario.php"'>Eliminar</button>
+    <button onclick='location.href="eliminarUsuario.php"'>Eliminar</button>
+
+
+     <h2>Artistas:</h2>
+    <button onclick='location.href="crearUsuario.php"'>Crear</button>
+    <button onclick='location.href="eliminarArtistas.php"'>Eliminar</button>
 
     <?php 
         }else{
             echo "Habla con los administradores.";
+            echo "<br>";
+            echo "<h2>Artistas:</h2>";
         }
         mysqli_close(conectarBBDD());
     ?>
-    
+    <button onclick='location.href="mostrarUsuario.php"'>Mostrar</button>
+    <button onclick='location.href="modificarArtistas.php"'>Modificar</button>
 </body>
 </html>
 
