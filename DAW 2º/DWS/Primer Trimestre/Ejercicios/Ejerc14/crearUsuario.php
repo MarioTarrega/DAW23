@@ -6,6 +6,21 @@
         $usuario = $_SESSION['nombre'];
         echo "$usuario, introduce la informacion del usuario</br>";
     }
+
+    // if(isset($_POST['submit'])){
+    //     $user = $_POST['nombre'];
+    //     $pass = $_POST['passw'];
+    //     $tipo = $_POST['tipo'];
+
+    //     $pass_cif = password_hash($pass, PASSWORD_DEFAULT);
+
+    //     $sql = " INSERT into usuarios (nombre, pwd, tipo) VALUES ('$user', '$pass_cif', $tipo)";
+    //     $cnc = conectarBBDD();
+    //     $result = mysqli_query($cnc, $sql);  
+        
+    // }
+
+    mysqli_close(conectarBBDD());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +40,19 @@
             <option value="1">Administrador</option>
             <option value="0">Normal</option>
         </select><br><br>
-        <button type="submit">Aceptar</button>
+        <input type="submit" name="submit" value="Aceptar">
     </form>
-    
+    <!-- <?php
+
+        
+
+        // $sql = " INSERT into usuarios (nombre, pwd, tipo) VALUES ($user, $pass, $tipo)";
+        // $cnc = conectarBBDD();
+
+        // if($cnc){
+        //     $result = mysqli_query($cnc, $sql);  
+        // }
+        
+    ?> -->
 </body>
 </html>
