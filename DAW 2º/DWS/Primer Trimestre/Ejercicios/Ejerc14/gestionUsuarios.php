@@ -19,7 +19,7 @@
         $tipo = $_POST['tipousu'];
         
         //limpiar caracteres para poder introducirlos en una sentencia SQL
-        // Preguntar a Monica si siempre se tiene que limpiar 
+        //Preguntar a Monica si siempre se tiene que limpiar 
         $user_cls = limpiarCaracteres($conex, $user);
         $pass_cls = limpiarCaracteres($conex, $pass);
         $pass_cif = password_hash($pass_cls, PASSWORD_DEFAULT);
@@ -47,8 +47,7 @@
 <body>
 
     <!-- Boton para volver al menu principal -->
-    <form action="menu.php">
-        <input type="button" value="Atras">
-    </form>
+    <button onclick='location.href="menu.php"'>Menu</button>
+
 </body>
 </html>

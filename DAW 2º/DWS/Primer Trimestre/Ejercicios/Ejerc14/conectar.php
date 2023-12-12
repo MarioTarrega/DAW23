@@ -4,6 +4,10 @@ function conectarBBDD (){
     return $conector;
 }
 
+function desconectarBBDD($con){
+    mysqli_close($con);
+}
+
 function limpiarCaracteres($conexion, $valorL) {
     //$valorL es el valor que se quiere limpiar de los caracteres no permitidos.
     return mysqli_real_escape_string($conexion, $valorL);

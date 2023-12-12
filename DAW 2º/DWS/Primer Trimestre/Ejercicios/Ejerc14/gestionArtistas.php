@@ -21,24 +21,28 @@
         $biografia = $_POST['biografia'];
        
         //limpiar caracteres para poder introducirlos en una sentencia SQL
-        $name_cls = limpiarCaracteres($conex, $name);
-        $instrumento_cls = limpiarCaracteres($conex, $instrumento);
-        $nacionalidad_cls = limpiarCaracteres($conex, $nacionalidad);
-        $webseite_cls = limpiarCaracteres($conex, $website);
-        $biografia_cls = limpiarCaracteres($conex, $biografia);
+        // $name_cls = limpiarCaracteres($conex, $name);
+        // $instrumento_cls = limpiarCaracteres($conex, $instrumento);
+        // $nacionalidad_cls = limpiarCaracteres($conex, $nacionalidad);
+        // $webseite_cls = limpiarCaracteres($conex, $website);
+        // $biografia_cls = limpiarCaracteres($conex, $biografia);
         
-        //sentencia que queremos insertar
-        $sql = " INSERT into artistas (nombre, nacionalidad, instrumento, biografia, website
-                        VALUES ('$name_cls', '$nacionalidad_cls', '$isntrumento_cls', '$biografia_cls', '$website_cls')";
+        //sentencia que queremos insertar, al utilizar interrogantes no tenemos porque limpiar caracteres
+        $sql = " INSERT into artistas (nombre, nacionalidad, instrumento, biografia, website)
+                        VALUES (?,?,?,?,?)";
         
         //si hay una conexion realiza la consulta SQL
         if($conex){
-            $result = mysqli_query($conex, $sql);  
+            //Preparamos la consulta
+            $consulta = mysqli_prepare($conex, $sql);
+            //Enlazamos los parametros a las variables
+            mysqli_stmt_bind_param($consulta, 'sssss', $name, $nacionalidad, $instrumento, $biografia, $website);
+            $result = mysqli_stmt_execute($consulta);  
         }
                 
     }
     //cerramos la conexion a la base de datos
-    mysqli_close(conectarBBDD());
+    desconectarBBDD($conex);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,8 +54,7 @@
 <body>
 
     <!-- Boton para volver al menu principal -->
-    <form action="menu.php">
-        <input type="button" value="Atras">
-    </form>
+    <button onclick='location.href="menu.php"'>Menu</button>
+
 </body>
 </html>

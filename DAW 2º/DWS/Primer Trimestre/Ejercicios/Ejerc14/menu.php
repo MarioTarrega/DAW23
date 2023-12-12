@@ -2,13 +2,14 @@
     session_start();
     require_once('conectar.php');
 
+    $conex = conectarBBDD();
 
     if(isset($_SESSION['nombre'])){
         //print_r($_SESSION['tipo']);
         
         $nombre = $_SESSION['nombre'];
         $admin = "SELECT tipo FROM usuarios WHERE nombre = '$nombre'";
-        $resultado = mysqli_query(conectarBBDD(), $admin);
+        $resultado = mysqli_query($conex, $admin);
         $tipo = mysqli_fetch_assoc($resultado);
         $_SESSION['tipo'] = $tipo["tipo"];
 
@@ -37,7 +38,7 @@
 
 
      <h2>Artistas:</h2>
-    <button onclick='location.href="crearUsuario.php"'>Crear</button>
+    <button onclick='location.href="crearArtistas.php"'>Crear</button>
     <button onclick='location.href="eliminarArtistas.php"'>Eliminar</button>
 
     <?php 
@@ -46,9 +47,9 @@
             echo "<br>";
             echo "<h2>Artistas:</h2>";
         }
-        mysqli_close(conectarBBDD());
+        desconectarBBDD($conex);
     ?>
-    <button onclick='location.href="mostrarUsuario.php"'>Mostrar</button>
+    <button onclick='location.href="mostrarArtistas.php"'>Mostrar</button>
     <button onclick='location.href="modificarArtistas.php"'>Modificar</button>
 </body>
 </html>
