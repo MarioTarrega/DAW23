@@ -38,7 +38,7 @@
 
 
      <h2>Artistas:</h2>
-    <button onclick='location.href="crearArtistas.php"'>Crear</button>
+    <button onclick='location.href="modificarArtistas.php"'>Modificar</button>
     <button onclick='location.href="eliminarArtistas.php"'>Eliminar</button>
 
     <?php 
@@ -49,8 +49,9 @@
         }
         desconectarBBDD($conex);
     ?>
+    <button onclick='location.href="crearArtistas.php"'>Crear</button>
     <button onclick='location.href="mostrarArtistas.php"'>Mostrar</button>
-    <button onclick='location.href="modificarArtistas.php"'>Modificar</button>
+    
 </body>
 </html>
 
