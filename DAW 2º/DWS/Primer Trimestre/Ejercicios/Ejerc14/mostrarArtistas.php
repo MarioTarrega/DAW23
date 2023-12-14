@@ -54,7 +54,7 @@ function obtenerDiscos($conex, $idGrupo){
     $artistas = obtenerArtistas($conex);
     foreach($artistas as $artista){
         echo "Nombre: " . $artista['nombre'] ." <br>";
-        echo "Nacionalidad: " . $artista['nacionalida'] . "<br>";
+        echo "Nacionalidad: " . $artista['nacionalidad'] . "<br>";
         echo "Instrumento: " . $artista['instrumento'] . "<br>";
         echo "Biografia: " . $artista['biografia'] . "<br>";
         echo "Sitio Web: " . $artista['website'] . "<br>";
@@ -62,12 +62,12 @@ function obtenerDiscos($conex, $idGrupo){
         $grupos = obtenerGrupos($conex, $artista['idartista']);
         
         foreach ($grupos as $grupo){
-            echo "<br>Grupo: " . $grupo['Nombre'] . "<br>";
+            echo "<br>Grupo: " . $grupo['nombre'] . "<br>";
             
             $discos = obtenerDiscos($conex, $grupo['idgrupo']);
 
             foreach ($discos as $disco){
-                echo "Discos: " . $disco['nombre'] . "<br>";
+                echo "Discos: " . $disco['titulo'] . "<br>";
             }
         }
 
