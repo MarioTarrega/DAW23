@@ -60,7 +60,7 @@ function obtenerDiscos($conex, $idGrupo){
         echo "Sitio Web: " . $artista['website'] . "<br>";
         
         $grupos = obtenerGrupos($conex, $artista['idartista']);
-
+        
         foreach ($grupos as $grupo){
             echo "<br>Grupo: " . $grupo['Nombre'] . "<br>";
             
