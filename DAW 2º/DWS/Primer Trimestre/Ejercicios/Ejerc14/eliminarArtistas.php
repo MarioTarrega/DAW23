@@ -1,20 +1,23 @@
 <?php
 session_start();
 require_once('conectar.php');
+$conex = conectarBBDD();
 //print_r("Hola");
 if(isset($_SESSION['nombre'])){
     //print_r($_SESSION['tipo']);
     
     $nombre = $_SESSION['nombre'];
     $admin = "SELECT tipo FROM usuarios WHERE nombre = '$nombre'";
-    $resultado = mysqli_query(conectarBBDD(), $admin);
+    $resultado = mysqli_query($conex, $admin);
     $tipo = mysqli_fetch_assoc($resultado);
     $_SESSION['tipo'] = $tipo["tipo"];
 
     if($_SESSION['tipo']==1){
         echo "Bienvenido/a/e ".$nombre.". Selecccione la opcion deseada.";
+        echo "<br>";
     }else{
         echo "Bienvenido/a/e ". $nombre . ". No eres administrador";
+        echo "<br>";
     }
 }
 
@@ -31,12 +34,20 @@ if(isset($_SESSION['nombre'])){
     <?php 
         if($_SESSION['tipo']){
             
-            $sql = ""
+            $sql = "SELECT idartista, nombre FROM artistas";
+            $artistas = mysqli_query($conex, $sql);
     ?>
-    <select name="usuarios" id="Nombre-Usuarios">
-
-
-    </select>
+    <form action="gestionArtistas.php" method="post"></form>
+        <select name="usuarios" id="Nombre-Usuarios">
+            <option value="selecciona">Selecciona un artista</option>
+                <?php
+                    while ( $arr = mysqli_fetch_array($artistas)){
+                        echo '<option value='.$arr[0].'>'.$arr[1]."</option>";
+                    }
+                ?>
+        </select>
+        <input type="submit" name="Eliminar" value="Eliminar">
+    </form>
     <?php 
         }else{
             echo "Habla con los administradores.";

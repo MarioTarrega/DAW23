@@ -20,7 +20,7 @@ function obtenerArtistas($conex){
 }
 
 function obtenerGrupos($conex, $idArtista){
-    $sql = "SELECT * FROM grupos INNER JOIN integrantes ON grupos.idgrupo = integrantes.idgrupo
+    $sql = "SELECT distinct grupos.idgrupo, nombre FROM grupos INNER JOIN integrantes ON grupos.idgrupo = integrantes.idgrupo
             WHERE idartista = $idArtista";
     $resultado = mysqli_query($conex,$sql);
 
@@ -50,9 +50,12 @@ function obtenerDiscos($conex, $idGrupo){
     <title>Document</title>
 </head>
 <body>
+    <!-- Boton para volver al menu principal -->
+    <button onclick='location.href="menu.php"'>Menu</button>
     <?php
     $artistas = obtenerArtistas($conex);
     foreach($artistas as $artista){
+        echo "<br>";
         echo "Nombre: " . $artista['nombre'] ." <br>";
         echo "Nacionalidad: " . $artista['nacionalidad'] . "<br>";
         echo "Instrumento: " . $artista['instrumento'] . "<br>";
@@ -75,5 +78,7 @@ function obtenerDiscos($conex, $idGrupo){
     }
     mysqli_close(conectarBBDD());
     ?>
+    <!-- Boton para volver al menu principal -->
+    <button onclick='location.href="menu.php"'>Menu</button>
 </body>
 </html>
