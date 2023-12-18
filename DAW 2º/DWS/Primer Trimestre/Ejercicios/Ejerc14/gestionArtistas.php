@@ -46,9 +46,9 @@
         $sentencia = mysqli_prepare($conex, $sql);
         mysqli_stmt_bind_param($sentencia,"i",$eliminar);
         if($correcto = mysqli_stmt_execute($sentencia)){
-            echo "$nombre, el artista ha sido eliminado."
+            echo "$nombre, el artista ha sido eliminado.";
         }else{
-            echo "$nombre, el artista no ha sido eliminado"
+            echo "$nombre, el artista no ha sido eliminado";
         }
     }
     //cerramos la conexion a la base de datos
