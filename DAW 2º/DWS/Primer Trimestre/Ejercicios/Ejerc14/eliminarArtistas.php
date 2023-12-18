@@ -46,7 +46,7 @@ if(isset($_SESSION['nombre'])){
                     }
                 ?>
         </select>
-        <input type="submit" name="Eliminar" value="Eliminar">
+        <input type="submit" name="eliminar" value="Eliminar">
     </form>
     <?php 
         }else{
@@ -54,5 +54,7 @@ if(isset($_SESSION['nombre'])){
         }
         mysqli_close(conectarBBDD());
     ?>
+    <!-- Boton para volver al menu principal -->
+    <button onclick='location.href="menu.php"'>Menu</button>
 </body>
 </html>

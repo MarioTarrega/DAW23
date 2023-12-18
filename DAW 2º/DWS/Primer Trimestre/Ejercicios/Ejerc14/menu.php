@@ -14,9 +14,9 @@
         $_SESSION['tipo'] = $tipo["tipo"];
 
         if($_SESSION['tipo']==1){
-            echo "Bienvenido/a/e ".$nombre.". Selecccione la opcion deseada.";
+            echo "Bienvenido/a/e ".$nombre.", selecccione la opcion deseada.";
         }else{
-            echo "Bienvenido/a/e ". $nombre . ". No eres administrador";
+            echo "Bienvenido/a/e ". $nombre . ", No eres administrador ";
         }
     }
 ?>
@@ -43,7 +43,7 @@
 
     <?php 
         }else{
-            echo "Habla con los administradores.";
+            echo "habla con los administradores.";
             echo "<br>";
             echo "<h2>Artistas:</h2>";
         }
@@ -51,6 +51,9 @@
     ?>
     <button onclick='location.href="crearArtistas.php"'>Crear</button>
     <button onclick='location.href="mostrarArtistas.php"'>Mostrar</button>
+    </br>
+    <br>
+    <button onclick='location.href="index.php"'>Cerrar Sesion</button>
     <!-- <button onclick='location.href="crearArtistas.php"'>Crear</button> -->
 
 </body>

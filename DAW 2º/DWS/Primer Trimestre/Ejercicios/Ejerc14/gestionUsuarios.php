@@ -32,8 +32,17 @@
             $result = mysqli_query($conex, $sql);  
         }
                 
+    }elseif(isset($_POST['eliminar'])){
+        $eliminar = $_POST['usuarios'];
+        $sql = "DELETE FROM usuarios WHERE codigo = ?";
+        $sentencia = mysqli_prepare($conex, $sql);
+        mysqli_stmt_bind_param($sentencia,"i",$eliminar);
+        if($correcto = mysqli_stmt_execute($sentencia)){
+            echo "$nombre, el artista ha sido eliminado.";
+        }else{
+            echo "$nombre, el artista no ha sido eliminado";
+        }
     }
-
     //cerramos la conexion a la base de datos
     mysqli_close(conectarBBDD());
 ?>

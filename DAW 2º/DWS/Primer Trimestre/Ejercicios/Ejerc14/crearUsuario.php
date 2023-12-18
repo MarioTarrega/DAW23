@@ -35,30 +35,3 @@
     <button onclick='location.href="menu.php"'>Menu</button>
 </body>
 </html>
- <!-- <?php
-
-        
-
-        // $sql = " INSERT into usuarios (nombre, pwd, tipo) VALUES ($user, $pass, $tipo)";
-        // $cnc = conectarBBDD();
-
-        // if($cnc){
-        //     $result = mysqli_query($cnc, $sql);  
-        // }
-        
-        ?> -->
-
-    <!-- 
-    // if(isset($_POST['submit'])){
-    //     $user = $_POST['nombre'];
-    //     $pass = $_POST['passw'];
-    //     $tipo = $_POST['tipo'];
-
-    //     $pass_cif = password_hash($pass, PASSWORD_DEFAULT);
-
-    //     $sql = " INSERT into usuarios (nombre, pwd, tipo) VALUES ('$user', '$pass_cif', $tipo)";
-    //     $cnc = conectarBBDD();
-    //     $result = mysqli_query($cnc, $sql);  
-        
-    // }
-    -->

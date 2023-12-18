@@ -19,13 +19,6 @@
         $nacionalidad = $_POST['nacionalidad'];
         $website = $_POST['website'];
         $biografia = $_POST['biografia'];
-       
-        //limpiar caracteres para poder introducirlos en una sentencia SQL
-        // $name_cls = limpiarCaracteres($conex, $name);
-        // $instrumento_cls = limpiarCaracteres($conex, $instrumento);
-        // $nacionalidad_cls = limpiarCaracteres($conex, $nacionalidad);
-        // $webseite_cls = limpiarCaracteres($conex, $website);
-        // $biografia_cls = limpiarCaracteres($conex, $biografia);
         
         //sentencia que queremos insertar, al utilizar interrogantes no tenemos porque limpiar caracteres
         $sql = " INSERT into artistas (nombre, nacionalidad, instrumento, biografia, website)
@@ -40,7 +33,7 @@
             $result = mysqli_stmt_execute($consulta);  
         }
                 
-    }elseif(isset($_POST["Eliminar"])){
+    }elseif(isset($_POST['eliminar'])){
         $eliminar = $_POST['usuarios'];
         $sql = "DELETE FROM artistas WHERE idartista = ?";
         $sentencia = mysqli_prepare($conex, $sql);
