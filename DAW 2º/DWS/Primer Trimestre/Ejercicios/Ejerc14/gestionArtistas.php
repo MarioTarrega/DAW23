@@ -55,6 +55,24 @@
     <title>Gestion Artistas</title>
 </head>
 <body>
+<form action="gestionArtistas.php" method="post">
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" name="nombre">
+        <br><br>
+        <label for="instrumento">Instrumento:</label>
+        <input type="text" name="instrumento" id="instrumento">
+        <br><br>
+        <label for="nacionalidad">Nacionalidad:</label>
+        <input type="text" name="nacionalidad" id="nacionalidad">
+        <br><br>
+        <label for="website">Website:</label>
+        <input type="url" name="website" id="website">
+        <br><br>
+        <label for="biografia">Biografia</label>
+        <textarea name="biografia" id="biografia" cols="30" rows="1"></textarea>
+        <br><br>
+        <input type="submit" name="submit" value="Aceptar">
+    </form>
 
     <!-- Boton para volver al menu principal -->
     <button onclick='location.href="menu.php"'>Menu</button>

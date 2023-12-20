@@ -35,7 +35,7 @@ if(isset($_SESSION['nombre'])){
             $sql = "SELECT codigo, nombre from usuarios";
             $usuarios = mysqli_query($conex, $sql)
     ?>
-    <form action="gestionUsuarios.php" method="post">
+    <form id="eliminUsr"action="gestionUsuarios.php" method="post">
         <select name="usuarios" id="Nombre-Usuarios">
             <option value="selecciona">Selecciona un Usuario</option>
                 <?php
@@ -43,8 +43,8 @@ if(isset($_SESSION['nombre'])){
                         echo '<option value='.$arr[0].'>'.$arr[1].'</option>';
                     }
                 ?>
-                <input type="button" name="eliminar" value="Eliminar">
         </select>
+        <p><input type="button" name="delete" value="Eliminar"></p>
     </form>
     <?php 
         }else{

@@ -16,20 +16,7 @@
     <title>Crear Artistas</title>
 </head>
 <body>
-    <?php
-        if(isset($_POST['modificar'])){
-            $modificar = $_POST['usuario'];
-            $sql = "UPDATE artistas 
-                SET nombre = '$nombre',
-                instrumento = '$instrumento',
-                nacionalidad = '$nacionalidad',
-                website = '$website',
-                biografia = '$biografia'
-                WHERE id_artista = $id_artista";
-        }
-
-
-    ?>
+    
     <br>
     <!-- Formulario para crear el Artista -->
     <form action="gestionArtistas.php" method="post">
