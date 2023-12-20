@@ -37,7 +37,7 @@ if(isset($_SESSION['nombre'])){
             $sql = "SELECT idartista, nombre FROM artistas";
             $artistas = mysqli_query($conex, $sql);
     ?>
-    <form action="gestionArtistas.php" method="post"></form>
+    <form action="gestionArtistas.php" method="post">
         <select name="usuarios" id="Nombre-Usuarios">
             <option value="selecciona">Selecciona un artista</option>
                 <?php
@@ -46,7 +46,7 @@ if(isset($_SESSION['nombre'])){
                     }
                 ?>
         </select>
-        <input type="submit" name="eliminar" value="Eliminar">
+        <input type="submit" name="eliminarArt" value="Eliminar">
     </form>
     <?php 
         }else{

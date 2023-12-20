@@ -44,7 +44,7 @@ if(isset($_SESSION['nombre'])){
                     }
                 ?>
         </select>
-        <p><input type="button" name="delete" value="Eliminar"></p>
+        <p><input type="button" name="eliminarUsr" value="Eliminar"></p>
     </form>
     <?php 
         }else{

@@ -35,7 +35,7 @@
         <label for="biografia">Biografia</label>
         <textarea name="biografia" id="biografia" cols="30" rows="1"></textarea>
         <br><br>
-        <input type="submit" name="submit" value="Aceptar">
+        <input type="submit" name="crearArt" value="Aceptar">
     </form>
     <!-- Boton para volver al menu principal -->
     <button onclick='location.href="menu.php"'>Menu</button>

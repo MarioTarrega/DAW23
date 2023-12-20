@@ -34,7 +34,7 @@
                     mysqli_close(conectarBBDD());
                 ?>
         </select>
-        <input type="submit" name="modificar" value="Modificar">
+        <input type="submit" name="modificarArt" value="Modificar">
     </form>
     <?php
         }elseif(isset($_POST['modificar'])){

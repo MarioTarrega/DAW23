@@ -2,18 +2,12 @@
     session_start();
     require_once('conectar.php');
 
-    //Si hay una sesion sale el mensaje de que ha introducido el usuario
-    if(isset($_SESSION['nombre'])){
-        $nombre = $_SESSION['nombre'];
-        $usuario = $_POST['nombre'];
-        echo "$nombre, El usuario $usuario ha sido introducido.";
-    }
-
     //Realizamnos la conexion a la base de datos con la funcion que hemos creado
     $conex = conectarBBDD();
     
 
-    if(isset($_POST['submit'])){
+    if(isset($_POST['crearArt'])){
+        $nombre = $_SESSION['nombre'];
         $name = $_POST['nombre'];
         $instrumento = $_POST['instrumento'];
         $nacionalidad = $_POST['nacionalidad'];
@@ -32,8 +26,12 @@
             mysqli_stmt_bind_param($consulta, 'sssss', $name, $nacionalidad, $instrumento, $biografia, $website);
             $result = mysqli_stmt_execute($consulta);  
         }
+        
+        echo "$nombre, El usuario $name ha sido introducido.";
                 
-    }elseif(isset($_POST['eliminar'])){
+    }
+    if(isset($_POST['eliminarArt'])){
+        $nombre = $_SESSION['nombre'];
         $eliminar = $_POST['usuarios'];
         $sql = "DELETE FROM artistas WHERE idartista = ?";
         $sentencia = mysqli_prepare($conex, $sql);
@@ -55,7 +53,14 @@
     <title>Gestion Artistas</title>
 </head>
 <body>
-<form action="gestionArtistas.php" method="post">
+    <?php
+        if(isset($_POST['modificarArt'])){
+
+        
+
+
+    ?>
+    <form action="gestionArtistas.php" method="post">
         <label for="nombre">Nombre: </label>
         <input type="text" id="nombre" name="nombre">
         <br><br>
@@ -73,7 +78,10 @@
         <br><br>
         <input type="submit" name="submit" value="Aceptar">
     </form>
+    <?php
+        }
 
+    ?>
     <!-- Boton para volver al menu principal -->
     <button onclick='location.href="menu.php"'>Menu</button>
 
