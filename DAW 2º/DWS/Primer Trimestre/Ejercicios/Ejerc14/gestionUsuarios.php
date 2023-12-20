@@ -2,13 +2,6 @@
     session_start();
     require_once('conectar.php');
 
-    //Si hay una sesion sale el mensaje de que ha introducido el usuario
-    if(isset($_SESSION['nombre'])){
-        $nombre = $_SESSION['nombre'];
-        $usuario = $_POST['nombre'];
-        echo "$nombre, El usuario $usuario ha sido introducido.";
-    }
-
     //Realizamnos la conexion a la base de datos con la funcion que hemos creado
     $conex = conectarBBDD();
     
@@ -17,6 +10,7 @@
         $user = $_POST['nombre'];
         $pass = $_POST['passw'];
         $tipo = $_POST['tipousu'];
+        $nombre = $_SESSION['nombre'];
         
         //limpiar caracteres para poder introducirlos en una sentencia SQL
         //Preguntar a Monica si siempre se tiene que limpiar 
@@ -31,19 +25,20 @@
         if($conex){
             $result = mysqli_query($conex, $sql);  
         }
+        
+        echo "$nombre, El usuario $user ha sido introducido.";
                 
     }
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['delete']) && $_POST['usuarios'] != 'selecciona') {
-            $eliminar = $_POST['usuarios'];
-            $sql = "DELETE FROM usuarios WHERE codigo = ?";
-            $sentencia = mysqli_prepare($conex, $sql);
-            mysqli_stmt_bind_param($sentencia,"i",$eliminar);
-            if($correcto = mysqli_stmt_execute($sentencia)){
-                echo "$nombre, el artista ha sido eliminado.";
-            }else{
-                echo "$nombre, el artista no ha sido eliminado";
-            }
+    if(isset($_POST['eliminarUsr'])){
+        $nombre = $_SESSION['nombre'];
+        $eliminar = $_POST['usuarios'];
+        $sql = "DELETE FROM usuarios WHERE codigo = ?";
+        $sentencia = mysqli_prepare($conex, $sql);
+        mysqli_stmt_bind_param($sentencia,"i",$eliminar);
+        if($correcto = mysqli_stmt_execute($sentencia)){
+            echo "$nombre, el Usuario ha sido eliminado.";
+        }else{
+            echo "$nombre, el Usuario no ha sido eliminado";
         }
     }
     //cerramos la conexion a la base de datos

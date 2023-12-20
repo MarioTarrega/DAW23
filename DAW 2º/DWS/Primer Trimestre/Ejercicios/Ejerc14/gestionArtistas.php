@@ -42,8 +42,7 @@
             echo "$nombre, el artista no ha sido eliminado";
         }
     }
-    //cerramos la conexion a la base de datos
-    desconectarBBDD($conex);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,20 +54,23 @@
 <body>
     <?php
         if(isset($_POST['modificarArt'])){
-
+            $artista = $_POST['usuarioMod'];
+            $sql = "SELECT * FROM artistas WHERE idartista = $artista[0]";
+            $artistas = mysqli_query($conex, $sql);
+            $datos = mysqli_fetch_array($artistas);
         
 
 
     ?>
     <form action="gestionArtistas.php" method="post">
         <label for="nombre">Nombre: </label>
-        <input type="text" id="nombre" name="nombre">
+        <input type="text" id="nombre" name="nombre" value='<?php echo "$datos[1]"; ?>'>
         <br><br>
         <label for="instrumento">Instrumento:</label>
-        <input type="text" name="instrumento" id="instrumento">
+        <input type="text" name="instrumento" id="instrumento" value='<?php echo "$datos[3]"; ?>'>
         <br><br>
         <label for="nacionalidad">Nacionalidad:</label>
-        <input type="text" name="nacionalidad" id="nacionalidad">
+        <input type="text" name="nacionalidad" id="nacionalidad" value='<?php echo "$datos[2]"; ?>'>
         <br><br>
         <label for="website">Website:</label>
         <input type="url" name="website" id="website">
@@ -76,11 +78,34 @@
         <label for="biografia">Biografia</label>
         <textarea name="biografia" id="biografia" cols="30" rows="1"></textarea>
         <br><br>
-        <input type="submit" name="submit" value="Aceptar">
+        <input type="submit" name="change" value="Aceptar">
     </form>
     <?php
         }
-
+        if(isset($_POST['change'])){
+            $nombre = $_SESSION['nombre'];
+            $name = $_POST['nombre'];
+            $instrumento = $_POST['instrumento'];
+            $nacionalidad = $_POST['nacionalidad'];
+            $website = $_POST['website'];
+            $biografia = $_POST['biografia'];
+            
+            //sentencia que queremos insertar, al utilizar interrogantes no tenemos porque limpiar caracteres
+            $sql = " UPDATE artistas SET nombre = ?, nacionalida = ?, instrumento = ?, biografia = ?, website = ? WHERE idartista = $datos[0]";
+            
+            //si hay una conexion realiza la consulta SQL
+            if($conex){
+                //Preparamos la consulta
+                $consulta = mysqli_prepare($conex, $sql);
+                //Enlazamos los parametros a las variables
+                mysqli_stmt_bind_param($consulta, 'sssss', $name, $nacionalidad, $instrumento, $biografia, $website);
+                $result = mysqli_stmt_execute($consulta);  
+            }
+            
+            echo "$nombre, El usuario $name ha sido actualizado.";
+        }
+        //cerramos la conexion a la base de datos
+        desconectarBBDD($conex);
     ?>
     <!-- Boton para volver al menu principal -->
     <button onclick='location.href="menu.php"'>Menu</button>

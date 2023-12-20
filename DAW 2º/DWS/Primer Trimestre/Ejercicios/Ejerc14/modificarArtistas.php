@@ -3,10 +3,6 @@
     require_once('conectar.php');
     $conex = conectarBBDD();
 
-    if(isset($_SESSION['nombre'])){
-        $nombre = $_SESSION['nombre'];
-        echo "$nombre, introduce el artista a modificar";
-    }
 
 ?>
 <!DOCTYPE html>
@@ -19,13 +15,15 @@
 <body>
     <?php
         if($_SESSION['tipo']){
+            $nombre = $_SESSION['nombre'];
+            echo "$nombre, introduce el artista a modificar";
 
             $sql = "SELECT * FROM artistas";
             $artistas = mysqli_query($conex, $sql);
-        
+        }
     ?>
-    <form action="modificarArtistas.php" method="post"></form>
-        <select name="usuario" id="Nombre-Usuarios">
+    <form action="gestionArtistas.php" method="post">
+        <select name="usuarioMod" id="Nombre-Usuarios">
             <option value="selecciona">Selecciona un artista</option>
                 <?php
                     while ( $arr = mysqli_fetch_array($artistas)){
@@ -35,38 +33,7 @@
                 ?>
         </select>
         <input type="submit" name="modificarArt" value="Modificar">
-    </form>
-    <?php
-        }elseif(isset($_POST['modificar'])){
-            $modificar = $_POST['usuario'];
-            $sql = "UPDATE artistas 
-                SET nombre = '$nombre',
-                instrumento = '$instrumento',
-                nacionalidad = '$nacionalidad',
-                website = '$website',
-                biografia = '$biografia'
-                WHERE id_artista = $id_artista";
-        }
-    ?>
-    <br></br>
-    <form action="gestionArtistas.php" method="post">
-        <label for="nombre">Nombre: </label>
-        <input type="text" id="nombre" name="nombre" label="<?php $nombre ?>">
-        <br><br>
-        <label for="instrumento">Instrumento:</label>
-        <input type="text" name="instrumento" id="instrumento" label="<?php $isntrumento ?>">
-        <br><br>
-        <label for="nacionalidad">Nacionalidad:</label>
-        <input type="text" name="nacionalidad" id="nacionalidad" label="<?php $nacionalidad ?>">
-        <br><br>
-        <label for="website">Website:</label>
-        <input type="url" name="website" id="website">
-        <br><br>
-        <label for="biografia">Biografia</label>
-        <textarea name="biografia" id="biografia" cols="30" rows="1"></textarea>
-        <br><br>
-        <input type="submit" name="submit" value="Aceptar">
-    </form>
+    </form>  
     <!-- Boton para volver al menu principal -->
     <button onclick='location.href="menu.php"'>Menu</button>
 </body>
