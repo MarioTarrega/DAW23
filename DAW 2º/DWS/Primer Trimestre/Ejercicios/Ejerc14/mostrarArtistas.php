@@ -1,12 +1,12 @@
 <?php
 session_start();
 require_once('conectar.php');
+$conex = conectarBBDD();
 
 if(isset($_SESSION['nombre'])){
     $usuario = $_SESSION['nombre'];
     echo "$usuario, los usuarios dados de alta son:";
 }
-$conex = conectarBBDD();
 
 function obtenerArtistas($conex){
     $sql = "SELECT * FROM artistas";

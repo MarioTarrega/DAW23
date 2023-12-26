@@ -53,6 +53,13 @@
     <button onclick='location.href="mostrarArtistas.php"'>Mostrar</button>
     </br>
     <br>
+    <h2>Discos:</h2>
+    <button onclick='location.href="mostrarDiscos.php"'>Mostrar</button>
+    <button onclick='location.href="crearDiscos.php"'>Crear</button>
+    <button onclick='location.href ="modificarDiscos.php"'>Modificar</button>
+    <button onclick='location.href="eliminarDiscos.php"'>Eliminar</button>
+    </br>
+    <br>
     <button onclick='location.href="index.php"'>Cerrar Sesion</button>
     <!-- <button onclick='location.href="crearArtistas.php"'>Crear</button> -->
 
