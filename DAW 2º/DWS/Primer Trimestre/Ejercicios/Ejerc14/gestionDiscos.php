@@ -9,5 +9,7 @@
 
     if(isset($_POST['mostrar'])){
         $grupoSelec = $_POST['seleccionaG'];
-        $discoSelec = $_POST['seleccionaD']
+        $discoSelec = $_POST['seleccionaD'];
     }
+
+?>
