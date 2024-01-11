@@ -31,36 +31,39 @@
     <?php 
         if($_SESSION['tipo']){ 
     ?>
-    <h2>Usuarios:</h2>
-    <button onclick='location.href="crearUsuario.php"'>Crear</button>
-    <button onclick='location.href="mostrarUsuario.php"'>Mostrar</button>
-    <button onclick='location.href="eliminarUsuario.php"'>Eliminar</button>
+    <h2>Usuarios:
+        <button onclick='location.href="crearUsuario.php"'>Crear</button>
+        <button onclick='location.href="mostrarUsuario.php"'>Mostrar</button>
+        <button onclick='location.href="eliminarUsuario.php"'>Eliminar</button>
+    </h2>
 
+    <h2>Artistas:
+        <button onclick='location.href="modificarArtistas.php"'>Modificar</button>
+        <button onclick='location.href="eliminarArtistas.php"'>Eliminar</button>
+    
 
-     <h2>Artistas:</h2>
-    <button onclick='location.href="modificarArtistas.php"'>Modificar</button>
-    <button onclick='location.href="eliminarArtistas.php"'>Eliminar</button>
-
-    <?php 
-        }else{
-            echo "habla con los administradores.";
-            echo "<br>";
-            echo "<h2>Artistas:</h2>";
-        }
-        desconectarBBDD($conex);
-    ?>
-    <button onclick='location.href="crearArtistas.php"'>Crear</button>
-    <button onclick='location.href="mostrarArtistas.php"'>Mostrar</button>
-    </br>
-    <br>
-    <h2>Discos:</h2>
-    <button onclick='location.href="mostrarDiscos.php"'>Mostrar</button>
-    <button onclick='location.href="crearDiscos.php"'>Crear</button>
-    <button onclick='location.href ="modificarDiscos.php"'>Modificar</button>
-    <button onclick='location.href="eliminarDiscos.php"'>Eliminar</button>
-    </br>
-    <br>
-    <button onclick='location.href="index.php"'>Cerrar Sesion</button>
+        <?php 
+            }else{
+                echo "habla con los administradores.";
+                echo "<br>";
+                echo "<h2>Artistas:</h2>";
+            }
+            desconectarBBDD($conex);
+        ?>
+        <button onclick='location.href="crearArtistas.php"'>Crear</button>
+        <button onclick='location.href="mostrarArtistas.php"'>Mostrar</button>
+    </h2>
+    
+    <h2>Discos:
+        <button onclick='location.href="mostrarDiscos.php"'>Mostrar</button>
+        <button onclick='location.href="crearDiscos.php"'>Crear</button>
+        <button onclick='location.href ="modificarDiscos.php"'>Modificar</button>
+        <button onclick='location.href="eliminarDiscos.php"'>Eliminar</button>
+    </h2>
+    
+    <h3>Cerra Sesión:
+        <button onclick='location.href="index.php"'>Cerrar Sesión</button>
+    </h3>
     <!-- <button onclick='location.href="crearArtistas.php"'>Crear</button> -->
 
 </body>

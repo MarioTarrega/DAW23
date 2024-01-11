@@ -1,5 +1,6 @@
 <?php
 function conectarBBDD (){
+    //$conector = mysqli_connect("db4free.net:3306","mariotarrega","M4r10T4rr3g4","discografia");
     $conector = mysqli_connect("localhost","root","","discografia");
     return $conector;
 }

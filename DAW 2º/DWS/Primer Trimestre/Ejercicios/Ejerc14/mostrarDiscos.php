@@ -15,7 +15,7 @@ function obtenerGrupos($conex){
 }
 
 function obtenerDiscos($conex, $idGrupo){
-    $sql = "SELECT * FROM discos WHERE idgrupo = $idGrupo";
+    $sql = "SELECT * FROM discos WHERE idgrupo == $idGrupo";
     $resultado = mysqli_query($conex, $sql);
 
     $discos = array();
@@ -32,7 +32,7 @@ function obtenerDiscos($conex, $idGrupo){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mostrar Discos</title>
 </head>
 <body>
     <?php
@@ -47,9 +47,14 @@ function obtenerDiscos($conex, $idGrupo){
         $discos = mysqli_query($conex, $sql2);
     }
     ?>
-    <form action="mostrarDiscos.php" method="post">
+    <!-- Boton para volver al menu principal -->
+    <button onclick='location.href="menu.php"'>Menu</button>
+    
+    </br></br>
+
+    <form action="gestionDiscos.php" method="post">
         <select name="grupoMost" id="grupo-mostrar">
-            <option value="Selecciona">Selecciona un Grupo</option>
+            <option value="seleccionaG">Selecciona un Grupo</option>
                 <?php
                     while($arr = mysqli_fetch_array($grupos)){
                         echo '<option value='.$arr[0].'>'.$arr[1].'</option>';
@@ -58,7 +63,7 @@ function obtenerDiscos($conex, $idGrupo){
         </select>
         
         <select name="discosMost" id="discos-mostrar">
-            <option value="Selecciona">Selecciona Disco</option>
+            <option value="seleccionaD">Selecciona Disco</option>
             <?php
                 while($arr2 = mysqli_fetch_array($discos)){
                     echo '<option value='.$arr2[0].'>'.$arr2[1].'</option>';
@@ -67,35 +72,16 @@ function obtenerDiscos($conex, $idGrupo){
            
         </select>
         <label for="mostrarCanciones">Incluir Canciones</label>
-        <input type="checkbox" name="mostrarCanciones" id="mostrar">
-        <br>
-        <input type="submit" name="seleccionGrp" value="Seleccionar Grupo">
-        <br>
-        <input type="submit" name="seleccionDsc" value="Seleccionar Discos">
-        <br>
-
-        
+        <input type="checkbox" name="incluirCanciones" id="incluir">
+        </br>
+        </br>
+        <input type="submit" name="mostrar" value="Mostrar">
     </form>
-    
-    <!-- Boton para volver al menu principal -->
-    <button onclick='location.href="menu.php"'>Menu</button>
-    <?php
-       /* $grupos = obtenerGrupos($conex);
-        foreach($grupos as $grupos){
-            echo "<br>";
-            echo "Nombre: ".$grupos['nombre']."<br>";
 
-            $discos=obtenerDiscos($conex, $grupos['idgrupos']);
+    </br>
 
-            foreach ($discos as $discos){
-                echo "Titulo: " .$discos['titulo']. "<br>";
-                echo "Año: ". $discos['anyo']. "<br>";
-            }
-        }*/
-    ?>
-    <form>
-        
-        
+    <form action="mostrarDiscos.php" method="post">
+        <input type="button" value="Cancelar">
     </form>
 </body>
 </html>
