@@ -43,8 +43,8 @@ function obtenerDiscos($conex, $idGrupo){
         $sql = "SELECT * FROM grupos";
         $grupos = mysqli_query($conex, $sql);
 
-        $sql2 = "SELECT * FROM discos";
-        $discos = mysqli_query($conex, $sql2);
+       // $sql2 = "SELECT * FROM discos";
+       // $discos = mysqli_query($conex, $sql2);
     }
     ?>
     <!-- Boton para volver al menu principal -->
@@ -62,15 +62,15 @@ function obtenerDiscos($conex, $idGrupo){
                 ?>
         </select>
         
-        <select name="discosMost" id="discos-mostrar">
+        <!-- <select name="discosMost" id="discos-mostrar">
             <option value="seleccionaD">Selecciona Disco</option>
             <?php
-                while($arr2 = mysqli_fetch_array($discos)){
-                    echo '<option value='.$arr2[0].'>'.$arr2[1].'</option>';
-                }
-            ?>
+            //   while($arr2 = mysqli_fetch_array($discos)){
+            //       echo '<option value='.$arr2[0].'>'.$arr2[1].'</option>';
+            //    }
+            ?> 
            
-        </select>
+        </select> -->
         <label for="mostrarCanciones">Incluir Canciones</label>
         <input type="checkbox" name="incluirCanciones" id="incluir">
         </br>
