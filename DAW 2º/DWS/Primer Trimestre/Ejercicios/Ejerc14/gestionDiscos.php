@@ -8,8 +8,8 @@
     $nombre = $_SESSION['nombre'];
 
     if(isset($_POST['mostrar'])){
-        $grupoSelec = $_POST['seleccionaG'];
-        $discoSelec = $_POST['seleccionaD'];
+        $grupoSelec = $_POST['Grupo'];
+        $discoSelec = $_POST['Disco'];
     }
 
     function obtenerDiscoG($conex, $grupoSelec){

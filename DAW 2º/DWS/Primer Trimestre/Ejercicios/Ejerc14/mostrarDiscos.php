@@ -36,16 +36,16 @@ function obtenerDiscos($conex, $idGrupo){
 </head>
 <body>
     <?php
-    if(isset($_SESSION['nombre'])){
-        $usuario = $_SESSION['nombre'];
-        echo "$usuario estas en la seccion de mostrar Discos.";
+        if(isset($_SESSION['nombre'])){
+            $usuario = $_SESSION['nombre'];
+            echo "$usuario estas en la seccion de mostrar Discos.";
 
-        $sql = "SELECT * FROM grupos";
-        $grupos = mysqli_query($conex, $sql);
+            $sql = "SELECT * FROM grupos";
+            $grupos = mysqli_query($conex, $sql);
 
-       // $sql2 = "SELECT * FROM discos";
-       // $discos = mysqli_query($conex, $sql2);
-    }
+        // $sql2 = "SELECT * FROM discos";
+        // $discos = mysqli_query($conex, $sql2);
+        }
     ?>
     <!-- Boton para volver al menu principal -->
     <button onclick='location.href="menu.php"'>Menu</button>
@@ -54,7 +54,7 @@ function obtenerDiscos($conex, $idGrupo){
 
     <form action="gestionDiscos.php" method="post">
         <select name="grupoMost" id="grupo-mostrar">
-            <option value="seleccionaG">Selecciona un Grupo</option>
+            <option value="Grupo">Selecciona un Grupo</option>
                 <?php
                     while($arr = mysqli_fetch_array($grupos)){
                         echo '<option value='.$arr[0].'>'.$arr[1].'</option>';
