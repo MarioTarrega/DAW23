@@ -5,7 +5,7 @@ $conex = conectarBBDD();
 
 
 if(isset($_SESSION['nombre'])){
-    $ususario = $_SESSION['nombre'];
+    $usuario = $_SESSION['nombre'];
     echo "$usuario, selecciona el disco o el grupo";
 
     $sql = "SELECT * FROM grupos";
@@ -56,7 +56,7 @@ function obtenerDiscos($conex, $idGrupo){
     </br></br>
 
     <form action="gestionDiscos.php" method="post">
-        <select name="grupoMost" id="grupo-mostrar">
+        <select name="grupoMost" id="grupo">
             <option value="">Selecciona un Grupo</option>
                 <?php
                     while($arr = mysqli_fetch_array($grupos)){
@@ -65,7 +65,7 @@ function obtenerDiscos($conex, $idGrupo){
                 ?>
         </select>
         
-        <select name="discosMost" id="discos-mostrar">
+        <select name="discosMost" id="disco">
             <option value="">Selecciona Disco</option>
             <?php
 
