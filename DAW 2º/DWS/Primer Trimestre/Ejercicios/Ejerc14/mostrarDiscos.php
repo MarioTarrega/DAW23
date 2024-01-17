@@ -66,11 +66,11 @@ function obtenerDiscos($conex, $idGrupo){
             <option value="seleccionaD">Selecciona Disco</option>
             <?php
                 while($arr2 = mysqli_fetch_array($discos)){
-                    echo '<option value='.$arr2[0].'>'.$arr2[1].'</option>';
+                   echo '<option value='.$arr2[0].'>'.$arr2[1].'</option>';
                 }
-            ?>
+            ?> 
            
-        </select>
+        </select> -->
         <label for="mostrarCanciones">Incluir Canciones</label>
         <input type="checkbox" name="incluirCanciones" id="incluir">
         </br>
