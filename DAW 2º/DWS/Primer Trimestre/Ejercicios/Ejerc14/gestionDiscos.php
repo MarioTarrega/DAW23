@@ -8,27 +8,9 @@
     $nombre = $_SESSION['nombre'];
 
     if(isset($_POST['mostrar'])){
-        $grupoSelec = $_POST['Grupo'];
-        $discoSelec = $_POST['Disco'];
+        $grupoSelec = $_POST['grupoMost'];
+        $discoSelec = $_POST['discosMost'];
     }
-
-    function obtenerDiscoG($conex, $grupoSelec){
-        $sql="SELECT * FROM disco WHERE idgrupo='$grupoSelec'";
-        $consulta = mysqli_query($conex, $sql);
-
-        $discoG = array();
-        while ($fila=mysqli_fetch_array($consulta)) {
-            $discoG[]=$fila;
-        }
-        return $discoG;
-    }
-
-    function obtenerDiscoD($conex, $discoSelec){
-        $sql="SELECT * FROM discos WHERE iddisco = $discoSelec";
-    }
-
-    
-
 
 ?>
 <!DOCTYPE html>
@@ -42,16 +24,17 @@
     <?php
         
             $sql = "SELECT * FROM discos WHERE 1 + 1 ";
-            if($grupoSelec){
+            if($grupoSelec =! ""){
                 $sql .= "AND idgrupo='$grupoSelec'";
             }
-            if($discoSelec){
+            if($discoSelec =! ""){
                 $sql .= "AND iddisco='$discoSelec'";
             }
             
             $consulta = mysqli_query($conex, $sql);
             $datos = mysqli_fetch_array($consulta);
-        
+            
+            echo '$datos'
     ?>
 
 
