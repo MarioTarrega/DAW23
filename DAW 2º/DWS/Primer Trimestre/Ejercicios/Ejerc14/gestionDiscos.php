@@ -8,8 +8,8 @@
     $nombre = $_SESSION['nombre'];
 
     if(isset($_POST['mostrar'])){
-        $grupoSelec = $_POST['grupoMost'];
-        $discoSelec = $_POST['discosMost'];
+        $grupoSelec = $_POST['grupo'];
+        $discoSelec = $_POST['disco'];
     }
 
 ?>

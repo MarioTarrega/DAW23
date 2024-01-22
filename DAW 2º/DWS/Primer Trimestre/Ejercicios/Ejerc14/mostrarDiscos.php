@@ -22,6 +22,9 @@ $conex = conectarBBDD();
     <title>Mostrar Discos</title>
 </head>
 <body>
+<?php
+   
+    ?>
     <!-- Boton para volver al menu principal -->
     <button onclick='location.href="menu.php"'>Menu</button>
     
