@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto final</title>
+    <link rel="stylesheet" href="style_d.css">
+</head>
+<body>
+
+    <header>
+        <nav class="menu">
+                <a href="#introduccion">Introducción</a>
+                <a href="#graficas">Gráficas</a>
+                <a href="#tablas">Tablas</a>
+                <a href="#about-me">About Me</a>
+                <a href="#exit">Exit</a>
+                <hr>
+        </nav>
+    </header>
+
+    <section class="contenedor1">
+        <div class="container1">
+            <h1 id="h1">
+                Selecciona o arrastra un fichero para procesarlo <br>
+                y poder seguir con las operando con la página web
+            </h1>
+            <div class="draggableArea" draggable="true" id="dragg">
+                <p>Arrastra un fichero aquí <label for="fileInput">o haz click aqui</label></p>
+                <input type="file" name="fileInput" id="fileInput" style="display: none;" accept=".csv">
+            </div>
+        </div>
+   
+
+        
+
+        <div class="container2">
+            <div class="section" id="graficas">
+                <h1>Gráficas</h1>
+                <p>En esta sección puedes ver todas las gráficas de interés de los datos introducidos</p>
+            </div>
+
+            <div class="section" id="tablas">
+                <h1>Tablas</h1>
+                <p>En esta seccion puedes ver todas las tablas introducidas</p>
+            </div>
+
+            <div class="section" id="about-me">
+                <h1>About Me</h1>
+                <p>En esta seccion puedes ver información sobre el creador de la página</p>
+            </div>
+
+            <div class="section" id="exit">
+                <h1>Exit</h1>
+                <p>Salir de la sesión y volver a la página de inicio de sesión</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contenedor2">
+        <div class="container">
+            <h1>Gráficas</h1>
+            <p>En esta sección puedes ver todas las gráficas de interés de los datos introducidos</p>
+        </div>
+
+        <div class="container">
+            <h1>Tablas</h1>
+            <p>En esta seccion puedes ver todas las tablas introducidas</p>
+        </div> 
+    </section>
+
+    <section class="contenedor3">
+        <div class="container" id="titulo">
+            Titulo
+        </div>
+        <div class="container" id="resultadoMes">
+            Resultado Mes
+        </div>
+        <div class="container" id="resultadoAno">
+            Resultado Año
+        </div>
+    </section>
+
+    <section class="contenedor4">
+        <div class="container">
+            <div class="section" id="introduccion">
+                <h1>About Me</h1>
+                <p>Apasionado por la tecnologia y la innovación, disfruto explorando las últimas tendencias en desarollo de software y diseño web.</p>
+            </div>   
+        </div>
+    </section>
+        
+    
+    <script src="script-dash.js"></script>
+
+    </body>
+</html>
+   
