@@ -1,17 +1,32 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//     const draggableDiv = document.getElementById("draggableArea");
+const contenedor = document.getElementById('dragg');
+const archivo = document.getElementById('fileInput');
 
-//     if (draggableDiv) {
-//         draggableDiv.addEventListener("mouseover", function() {
-//             draggableDiv.style.transform = "scale(1.2)";
-//             draggableDiv.style.backgroundColor = "#c56166";
-//         });
+archivo.addEventListener('change', function(e) { 
+    console.log( archivo.files);
+});
 
-//         draggableDiv.addEventListener("mouseout", function() {
-//             draggableDiv.style.transform = "scale(1)";
-//             draggableDiv.style.backgroundColor = "";
-//         });
-//     }
-// });
+contenedor.addEventListener('drop' , (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    console.log(files);
+    window.alert("Conseguido!")
+});
+contenedor.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    contenedor.style.transition = 'height ease-in-out';
+    contenedor.style.scale = "1.2";
+    contenedor.style.backgroundColor = "white";
+    contenedor.style.color = "#723e4e"; // Cambia el valor de altura deseado
+});
 
-window.alert(document.querySelector("p").innerHTML);
+contenedor.addEventListener('dragleave', (e) => {
+    contenedor.style.transition = 'height ease-in-out';
+    contenedor.style.scale = "1";
+    contenedor.style.backgroundColor = "#723e4e"; 
+    contenedor.style.color = "white";
+    // Cambia el valor de altura original
+});
+
+contenedor.addEventListener('dragover' , (e) => {
+    e.preventDefault();
+});
