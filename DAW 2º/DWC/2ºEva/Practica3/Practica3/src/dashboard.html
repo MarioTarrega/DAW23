@@ -11,8 +11,8 @@
     <header>
         <nav class="menu">
                 <a href="#introduccion">Introducción</a>
-                <a href="#graficas">Gráficas</a>
-                <a href="#tablas">Tablas</a>
+                <a href="#graficas" class="oculto">Gráficas</a>
+                <a href="#tablas" class="oculto">Tablas</a>
                 <a href="#about-me">About Me</a>
                 <a href="#exit">Exit</a>
                 <hr>
@@ -64,8 +64,8 @@
             <h1>Gráficas</h1>
             <h3>Introduce los parámetros de filtro para la gráfica</h3>
             <p>Selecciona el rango de años</p>
-            <input type="range" name="sliderAno" id="sliderAno" min="2009" max="2023" value="2009" oninput="updateSliderValue()">
-            <p id="sliderValue"> Año Seleccionado:</p>
+            <input type="range" name="sliderAno" id="sliderAnoG" min="2009" max="2023" value="2009" oninput="updateSliderValueGraficas()">
+            <p id="sliderValueG"> Año Seleccionado: 2009</p>
         </div>
 
         <div class="container">
@@ -76,7 +76,11 @@
 
     <section class="contenedor3">
         <div class="container" id="titulo">
-            Titulo
+            <h1>Tablas</h1>
+            <h3>Introduce los párametros de filtro para la tabla</h3>
+            <p>Selecciona el rango de años</p>
+            <input type="range" name="sliderAno" id="sliderAnoT" min="2009" max="2023" value="2009" oninput="updateSliderValueTablas()">
+            <p id="sliderValueT"> Año Seleccionado: 2009</p>
         </div>
         <div class="container" id="resultadoMes">
             Resultado Mes
@@ -113,8 +117,8 @@
     <footer>
         <nav class="pie">
             <a href="#introduccion">Introducción</a>
-            <a href="#graficas">Gráficas</a>
-            <a href="#tablas">Tablas</a>
+            <a href="#graficas" class="oculto">Gráficas</a>
+            <a href="#tablas" class="oculto">Tablas</a>
             <a href="#about-me">About Me</a>
             <a href="#exit">Exit</a>
             <a href="https://github.com/MarioTarrega"><img src="../imgs/Redes/image.png" alt="GitHub"></a>
