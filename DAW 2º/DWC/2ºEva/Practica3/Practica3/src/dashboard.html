@@ -62,7 +62,10 @@
     <section class="contenedor2">
         <div class="container">
             <h1>Gráficas</h1>
-            <p>En esta sección puedes ver todas las gráficas de interés de los datos introducidos</p>
+            <h3>Introduce los parámetros de filtro para la gráfica</h3>
+            <p>Selecciona el rango de años</p>
+            <input type="range" name="sliderAno" id="sliderAno" min="2009" max="2023" value="2009" oninput="updateSliderValue()">
+            <p id="sliderValue"> Año Seleccionado:</p>
         </div>
 
         <div class="container">
@@ -87,11 +90,38 @@
         <div class="container">
             <div class="section" id="introduccion">
                 <h1>About Me</h1>
-                <p>Apasionado por la tecnologia y la innovación, disfruto explorando las últimas tendencias en desarollo de software y diseño web.</p>
+                <p>Apasionado por la tecnologia y la innovación, disfruto explorando las últimas tendencias en desarollo de software y diseño web.
+                    Me encante el proceso creativo de convertir ideas complejas en aplicaciones simples y páginas web elegantes y funcionales.
+                    En mi tiempo libre, me sumerjo en el vasto mundo de los videojuegos o me pierdo en la música de mis artistas favoritos.
+                    La naturaleza me inspira, por lo que a menudo salgo a caminar  para conectarme con el entorno y encontrar un nuevo enfoque para los proyectos que emprendo. 
+                    Estoy constantemente en busca de nuevas experiencias que amplien mis horizontes y me empujen a salir de mi zona de confort.
+                    <br>
+                    Fuera del mundo digital, tengo una afinidad por el aire libre. Ya sea haciendo senderismo por senderos sinuosos o acampando bajo un cielo estrellado, me siento más en casa cuando estoy rodeado por la belleza de la naturaleza.
+                    También disfruto mucho de la cocina, especialmente esperimetando con recetas de diferentes culturas y fusionando sabonres inesperados.
+                    Los libros son otra pasión: me pierdo fácilmente en las páginas de novelas históricas y biograficas de figuras inspiradoras que han moldeado nuestro mundo.
+                    La volundtad de aprender y crecer me impulsa a involucrarme en proyectos comunitarios y avilidades que tienen un impacto positivo en la sociedad.           
+                </p>
+                <img src="../imgs/Foto Ficha.jpg" alt="Imagen Carnet" class="carnet">
+                <div class="redes">
+                    <a href="https://github.com/MarioTarrega"><img src="../imgs/Redes/gitHub.png" alt="GitHub"></a>
+                    <a href="https://twitter.com/mariotb25"><img src="../imgs/Redes/image (1).png" alt="X"></a>
+                    <a href="https://www.instagram.com/mariotb25/"><img src="../imgs/Redes/instagram.png" alt="Instagram"></a>
+                </div>
             </div>   
         </div>
     </section>
-        
+    <footer>
+        <nav class="pie">
+            <a href="#introduccion">Introducción</a>
+            <a href="#graficas">Gráficas</a>
+            <a href="#tablas">Tablas</a>
+            <a href="#about-me">About Me</a>
+            <a href="#exit">Exit</a>
+            <a href="https://github.com/MarioTarrega"><img src="../imgs/Redes/image.png" alt="GitHub"></a>
+            <a href="https://twitter.com/mariotb25"><img src="../imgs/Redes/X(white).png" alt="X"></a>
+            <a href="https://www.instagram.com/mariotb25/"><img src="../imgs/Redes/instagram(white).png" alt="Instagram"></a>
+        </nav>
+    </footer>    
     
     <script src="script-dash.js"></script>
 

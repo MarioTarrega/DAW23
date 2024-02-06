@@ -30,3 +30,9 @@ contenedor.addEventListener('dragleave', (e) => {
 contenedor.addEventListener('dragover' , (e) => {
     e.preventDefault();
 });
+
+function updateSliderValue(){
+    var slider = document.getElementById("sliderAno");
+    var output = document.getElementById("sliderValue");
+    output.innerHTML = "Año seleccionado: " + slider.value;
+}
