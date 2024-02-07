@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto final</title>
     <link rel="stylesheet" href="style_d.css">
+    <script src="https://gmouse.github.io/dataframe-js/dist/dataframe.min.js"></script>
 </head>
 <body>
 
     <header>
         <nav class="menu">
                 <a href="#introduccion">Introducción</a>
-                <a href="#graficas" class="oculto">Gráficas</a>
-                <a href="#tablas" class="oculto">Tablas</a>
+                <a href="#graficas" style="display: none;" id="menu-graficas">Gráficas</a>
+                <a href="#tablas" style="display: none;" id="menu-tablas">Tablas</a>
                 <a href="#about-me">About Me</a>
                 <a href="#exit">Exit</a>
                 <hr>
@@ -39,22 +40,25 @@
             <div class="section" id="graficas">
                 <h1>Gráficas</h1>
                 <br>En esta sección puedes ver </br>todas las gráficas de interés de los datos introducidos</p>
-                <img src="../imgs/Graph-No-Background.png" alt="Imagen de unas graficas">
+                <img src="../imgs/Grafica Blanca.png" alt="Imagen de unas graficas">
             </div>
 
             <div class="section" id="tablas">
                 <h1>Tablas</h1>
                 <p>En esta seccion puedes ver <br> todas las tablas introducidas</p>
+                <img src="../imgs/Tabals blanca.png" alt="Imagen de una tabla">
             </div>
 
             <div class="section" id="about-me">
                 <h1>About Me</h1>
                 <p>En esta seccion puedes ver información sobre el creador de la página</p>
+                <img src="../imgs/Foto Ficha.jpg" alt="Imagen Carnet" class="carnet">
             </div>
 
             <div class="section" id="exit">
                 <h1>Exit</h1>
                 <p>Salir de la sesión y volver a la página de inicio de sesión</p>
+                <img src="../imgs/Exit blanca.png" alt="imagen de salida">
             </div>
         </div>
     </section>
@@ -92,7 +96,7 @@
 
     <section class="contenedor4">
         <div class="container">
-            <div class="section" id="introduccion">
+            <div class="about" id="introduccion">
                 <h1>About Me</h1>
                 <p>Apasionado por la tecnologia y la innovación, disfruto explorando las últimas tendencias en desarollo de software y diseño web.
                     Me encante el proceso creativo de convertir ideas complejas en aplicaciones simples y páginas web elegantes y funcionales.
@@ -117,8 +121,8 @@
     <footer>
         <nav class="pie">
             <a href="#introduccion">Introducción</a>
-            <a href="#graficas" class="oculto">Gráficas</a>
-            <a href="#tablas" class="oculto">Tablas</a>
+            <a href="#graficas" style="display: none;" id="menu-grafica">Gráficas</a>
+            <a href="#tablas" style="display: none;" id="menu-tablas">Tablas</a>
             <a href="#about-me">About Me</a>
             <a href="#exit">Exit</a>
             <a href="https://github.com/MarioTarrega"><img src="../imgs/Redes/image.png" alt="GitHub"></a>
