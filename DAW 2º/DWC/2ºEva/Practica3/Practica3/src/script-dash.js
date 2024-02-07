@@ -47,7 +47,7 @@ function updateSliderValueTablas(){
 }
 
 function processarArchivo(file){
-    document.querySelector(".container2").style.display = "block";
+    document.querySelector(".container2").style.display = "grid";
     document.querySelector(".contenedor2").style.display = "grid";
     document.querySelector(".contenedor3").style.display = "block";
     
