@@ -115,7 +115,7 @@ body{
 -webkit-transform: translateX(400%);
             transform: translateX(400%);
 }
-.oculto{
+#oculto{
     display: none;
 }
 
@@ -176,7 +176,7 @@ body{
 
 .container2 img {
     width: 35%;
-    height: 55%;  
+    height: auto;  
 }
 
 .contenedor2{
