@@ -52,27 +52,52 @@ contenedor.addEventListener('mouseout', (e) => {
     contenedor.style.color = "white";
 });
 
+let valorGrafica = 0;
+let valorTabla = 0;
 
 function updateSliderValueGraficas(){
     var slider = document.getElementById("sliderAnoG");
     var output = document.getElementById("sliderValueG");
-    output.innerHTML = "Año seleccionado: " + slider.value;
+
+    valorGrafica = slider.value;
+    output.innerHTML = "Año seleccionado: " + valorGrafica;
+    return valorGrafica;
 }
 
 function updateSliderValueTablas(){
+
     var slider = document.getElementById("sliderAnoT");
     var output = document.getElementById("sliderValueT");
-    output.innerHTML = "Año seleccionado: " + slider.value;
+
+    valorTabla = slider.value;
+   // console.log(valorTabla);
+    output.innerHTML = "Año seleccionado: " + valorTabla;
+    return valorTabla;
+}
+
+function updateSliders(){
+    
+    const contenedorG = document.getElementById('containerG');
+    const contenedorT = document.getElementById('containerT');
+    const valorG = updateSliderValueGraficas();
+    const valorT = updateSliderValueTablas();
+
+    if(valorG >= 2009 && valorG <= 2023){
+    }
+
+    if(valorT >= 2009 && valorT <= 2023){
+        showTables(valorT)
+        window.alert("Estoy en UpdateSliders" + valorT)
+    }
+
 }
 
 function processarArchivo(file){
- HEAD
-
 
     const leer = new FileReader();
     leer.onload = function(e){
         const contenido = e.target.result;
-        console.log(contenido);
+        // console.log(contenido);
     };
     leer.onerror = function(e){
         console.log(e);
@@ -84,6 +109,9 @@ function processarArchivo(file){
             
             preprocessDF(df);  
             roundDigitsDF(df);
+            groupedDF(df);
+            getDataFromDF(df);
+            showTables(df);
         
 
     })
@@ -108,32 +136,76 @@ function preprocessDF(df) {
             .cast('VentasC', parseFloat)
             .cast('VentasD', parseFloat);
 
-    // Calculate the mean of each column
-    const columnMeans = df2.reduce((acc, col) => {
-        const mean = col.mean();
-        acc[col.name] = mean;
-        return acc;
-    }, {});
-
     // Fill missing values with the mean of each column
-    const df3 = df2.fillMissing(columnMeans);
+    const df3 = df2.fillMissingValues(roundDigitsDF(df2));
 
     return df3; 
 }
 
 function roundDigitsDF(df) {
-    const df2 = df.mapColumns((col) => {
-        return col.map((value) => {
-            return Math.round(value * 100) / 100;
+    const df2 = df.listColumns();
+    df2.forEach(column => {
+        df = df =df.withColumn(
+            column,
+            row => Math.round(row.get(column)*100)/100)
         });
-    });
-
     return df2;
 }
 
-// function groupedDF(df) {
+function groupedDF(df) {
+    const agrupar = df.groupBy('Year')
 
+    const df2 = agrupar.aggregate(group => group.stat.mean('VentasA'))
+                  .rename("aggregation","VentasA")
+    const df2_1 = agrupar.aggregate(group => group.stat.mean('VentasB'))
+                     .rename("aggregation","VentasB")
+    const df2_2 = agrupar.aggregate(group => group.stat.mean('VentasC'))
+                     .rename("aggregation","VentasC")
+    const df2_3 = agrupar.aggregate(group => group.stat.mean('VentasD'))
+                     .rename("aggregation","VentasD");
+    
+    const df3 = df2.join(df2_1, 'Year').join(df2_2, 'Year').join(df2_3, 'Year');
+console.log(df3.show());
+    return df3;
+}
 
+function getDataFromDF(df){
+    const df2 = df.toArray();
+    return df2;
+
+}
+
+function showTables(df){
+    const anoT = document.getElementById('sliderAnoT').value;
+    const anoM = df.stat.max('Year');
+    const df2 = df.filter(row => row.get('Year') >= anoT && row.get('Year') <= anoM);
+    const df3 = roundDigitsDF(df2);
+    
+    columnas = df2.listColumns() // Array con los nombres de la columna
+    valores = df2.toArray() // Array de filas
+    const table = document.createElement("table")
+    // Creamos la cabecera de la tabla                
+    const headerRow = document.createElement("tr")
+                     
+    columnas.forEach(column => {     
+        const th = document.createElement("th")     
+        th.textContent = column
+        headerRow.appendChild(th)
+        })
+    table.appendChild(headerRow)
+    // Creamos las filas de las tablas
+    valores.forEach(row => {
+        const tr = document.createElement("tr")
+        row.forEach(value => {
+            const td = document.createElement("td")
+            td.textContent = value
+            tr.appendChild(td)
+            })
+        table.appendChild(tr)
+    })
+    // Añadimos las etiquetas HTML de la tabla al body
+    document.getElementById("total").appendChild(table)
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const container2 = document.querySelectorAll('.container2 .section');
